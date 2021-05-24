@@ -4,6 +4,7 @@ import { PublicRoutingModule } from "./public-routing.module";
 
 import { PublicComponent } from "./public.component";
 import { HomeComponent } from "./home/containers/home.component";
+import { LoginComponent } from "./login/containers/login.component";
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { HomeComponent } from "./home/containers/home.component";
   ],
   declarations: [
     PublicComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent
   ],
   exports: [],
   providers: []
