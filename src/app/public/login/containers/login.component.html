@@ -8,24 +8,26 @@
     <mat-tab-group dynamicHeight mat-align-tabs="center">
       <mat-tab label="Iniciar sesión">
         <div class="login-credentials-container">
-          <form (ngSubmit)="sendLogin(email, password)" #loginForm="ngForm">
+
+          <form (ngSubmit)="sendLogin(loginForm)" #loginForm="ngForm">
             <mat-form-field appearance="outline" class="lemail-input">
+
               <mat-label>Email</mat-label>
-              <input matInput type="email" id="email" [formControl]="emailFormControl" placeholder="Ejemplo: name@example.com" required minlength="5" [(ngModel)]="user.email" name="email" #email>
-              <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                Introduzca una dirección de correo electrónico válida
-              </mat-error>
-              <mat-error *ngIf="emailFormControl.hasError('required')">
-                El campo "Email" es <strong>obligatorio</strong>
-              </mat-error>
+
+              <input matInput type="email" id="email" placeholder="Ejemplo: name@example.com" required minlength="5" [(ngModel)]="user.email" name="email">
+
             </mat-form-field>
 
             <mat-form-field appearance="outline" class="lpass-input">
+
               <mat-label>Contraseña</mat-label>
-              <input matInput [type]="hide ? 'password' : 'text'" #password>
+
+              <input matInput [type]="hide ? 'password' : 'text'" id="password" required [(ngModel)]="user.password" name="password">
+
               <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
+
             </mat-form-field>
             <button mat-button type="submit" class="env-form-btn">Iniciar</button>
           </form>
@@ -33,19 +35,19 @@
       </mat-tab>
       <mat-tab label="Registro">
         <br>
-        <div class="singup-credentials-container">
-          <form class="singup-form">
+        <div class="singup-credentials-container" >
+          <form class="singup-form" (ngSubmit)="sendRegister(registerForm, apellido)" #registerForm="ngForm">
             <table class="table-full-width" cellspacing="5">
               <tr>
                 <td>
                   <mat-form-field appearance="outline" class="name-input">
-                    <mat-label>Nombre*</mat-label>
-                    <input matInput #nombre>
+                    <mat-label>Nombre</mat-label>
+                    <input matInput type="text" id="nombre" required [(ngModel)]="user.nombre" name="nombre">
                   </mat-form-field>
                 </td>
                 <td>
                   <mat-form-field appearance="outline" class="lname-input">
-                    <mat-label>Apellido*</mat-label>
+                    <mat-label>Apellido</mat-label>
                     <input matInput #apellido>
                   </mat-form-field>
                 </td>
@@ -57,37 +59,31 @@
                 <td>
                   <mat-form-field appearance="outline" class="city-input">
                     <mat-label>Ciudad</mat-label>
-                    <input matInput placeholder="Ejemplo: Sevilla" #ciudad>
+                    <input matInput type="text" placeholder="Ejemplo: Sevilla" id="ciudad" [(ngModel)]="user.ciudad" name="ciudad">
                   </mat-form-field>
                 </td>
                 <td>
                   <mat-form-field appearance="outline" class="country-input">
                     <mat-label>País</mat-label>
-                    <input matInput placeholder="Ejemplo: España" #pais>
+                    <input matInput type="text" placeholder="Ejemplo: España" id="pais" [(ngModel)]="user.pais" name="pais">
                   </mat-form-field>
                 </td>
               </tr>
             </table>
 
               <mat-form-field appearance="outline" class="email-input">
-                <mat-label>Email*</mat-label>
-                <input type="email" matInput [formControl]="emailFormControl" placeholder="Ejemplo: name@example.com" id="email" #emailr>
-                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-                  Introduzca una dirección de correo electrónico válida
-                </mat-error>
-                <mat-error *ngIf="emailFormControl.hasError('required')">
-                  El campo "Email" es <strong>obligatorio</strong>
-                </mat-error>
+                <mat-label>Email</mat-label>
+                <input type="email" matInput type="email" id="emailr" placeholder="Ejemplo: name@example.com" required minlength="5" [(ngModel)]="user.email" name="emailr">
               </mat-form-field>
 
               <mat-form-field appearance="outline" class="pass-input">
-                <mat-label>Contraseña*</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'" #passwordr>
+                <mat-label>Contraseña</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" id="password" required [(ngModel)]="user.password" name="password">
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                   <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
               </mat-form-field>
-              <button mat-button class="env-form-btn" (click)="registro(nombre, apellido, ciudad, pais, emailr, passwordr)">Registrarse</button>
+              <button type="submit" mat-button class="env-form-btn">Registrarse</button>
 
           </form>
 

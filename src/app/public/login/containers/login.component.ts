@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import {FormControl, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormControl, Validators, NgForm} from '@angular/forms';
 
 import { User } from '../../../../app/core/models/user.model';
 
@@ -27,17 +27,15 @@ export class LoginComponent implements OnInit{
 
   ngOnInit(){}
 
-  iniciarSesion(email:HTMLInputElement, password:HTMLInputElement){
-    this.loginService.validateLogin(email.value, password.value)
-
+  sendLogin(f: NgForm){
+    console.log(f.value)
+    console.log(f.valid)
   }
 
-  sendLogin(email:HTMLInputElement, password:HTMLInputElement){
-    console.log(email.value + password.value)
-  }
-
-  registro(nombre:HTMLInputElement, apellido:HTMLInputElement, ciudad:HTMLInputElement, pais:HTMLInputElement, email:HTMLInputElement, password:HTMLInputElement){
-    this.loginService.registerUser(this.user = {nombre: nombre.value + ' ' + apellido.value, ciudad: ciudad.value, pais: pais.value, email: email.value, password: password.value})
+  sendRegister(f: NgForm, apellido: HTMLInputElement){
+    console.log(f.value)
+    console.log(apellido.value)
+    console.log(f.valid)
   }
 
 }
