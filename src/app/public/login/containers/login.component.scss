@@ -5,7 +5,8 @@
 .env-form-btn{
   width: 100%;
   height: 50%;
-  background-color: whitesmoke;
+  background-color: #71B33E;
+  color: azure;
 }
 
 .lemail-input{
@@ -93,5 +94,65 @@
 
   .pass-input{
     zoom: 0.9;
+  }
+}
+
+@media (max-width: 800px) and (min-width: 750px){
+  .mat-form-field{
+    width: 100%;
+  }
+
+  .name-input{
+    width: 50%;
+  }
+
+  .lname-input{
+    width: 50%;
+    position: absolute;
+    left: 50%;
+    bottom: 73.5%;
+    float: left;
+  }
+
+  .city-input{
+    width: 50%;
+  }
+
+  .country-input{
+    width: 50%;
+    position: absolute;
+    left: 50%;
+    bottom: 50.6%;
+    float: left;
+  }
+}
+
+@media (max-width: 1260px) and (min-width: 1025px){
+  .mat-form-field{
+    width: 100%;
+  }
+
+  .name-input{
+    width: 50%;
+  }
+
+  .lname-input{
+    width: 50%;
+    position: absolute;
+    left: 50%;
+    bottom: 73.8%;
+    float: left;
+  }
+
+  .city-input{
+    width: 50%;
+  }
+
+  .country-input{
+    width: 50%;
+    position: absolute;
+    left: 50%;
+    bottom: 50.8%;
+    float: left;
   }
 }
