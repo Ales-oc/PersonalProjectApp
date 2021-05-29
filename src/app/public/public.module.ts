@@ -6,6 +6,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import { CommonModule } from '@angular/common';
 
 import { PublicComponent } from "./public.component";
 import { HomeComponent } from "./home/containers/home.component";
@@ -20,7 +21,8 @@ import { LoginComponent } from "./login/containers/login.component";
     MatTabsModule,
     MatInputModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    CommonModule
   ],
   declarations: [
     PublicComponent,

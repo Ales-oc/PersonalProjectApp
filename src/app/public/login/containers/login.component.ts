@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Renderer2 } from "@angular/core";
 import {FormControl, Validators, NgForm} from '@angular/forms';
 
 import { User } from '../../../../app/core/models/user.model';
@@ -14,10 +14,10 @@ import { LoginService } from './login.service';
 
 export class LoginComponent implements OnInit{
 
-  constructor(private loginService: LoginService){
-  }
+  constructor(private loginService: LoginService){}
 
-  user: User = new User('', '', '', '', '');
+  //! significa que va atener valor en el futuro, así no tengo que inicuializarlo con los vacios
+  user!: User
 
   hide = true
   emailFormControl = new FormControl('', [
@@ -28,8 +28,11 @@ export class LoginComponent implements OnInit{
   ngOnInit(){}
 
   sendLogin(f: NgForm){
+
     console.log(f.value)
+
     console.log(f.valid)
+
   }
 
   sendRegister(f: NgForm, apellido: HTMLInputElement){
