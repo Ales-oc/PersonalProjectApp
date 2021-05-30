@@ -1,3 +1,4 @@
+import { error } from "@angular/compiler/src/util";
 import { Component, OnInit, Renderer2 } from "@angular/core";
 import {FormControl, Validators, NgForm} from '@angular/forms';
 
@@ -20,18 +21,22 @@ export class LoginComponent implements OnInit{
   user!: User
 
   hide = true
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-  ]);
 
   ngOnInit(){}
 
   sendLogin(f: NgForm){
 
-    console.log(f.value)
+    if(f.valid){
 
-    console.log(f.valid)
+      this.loginService.validateLogin(f.value.email, f.value.password).subscribe(data => {
+        console.log("Logueado")
+        console.log(data)
+      },
+      error => {
+        console.log(error)
+      })
+
+    }
 
   }
 
