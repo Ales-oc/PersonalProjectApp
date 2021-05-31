@@ -15,7 +15,7 @@ export class LoginService {
 
     //localhost_3000/
 
-    return this.http.post('api/user/login',{
+    return this.http.post('api/users/login',{
       email : email,
       password : password
     })

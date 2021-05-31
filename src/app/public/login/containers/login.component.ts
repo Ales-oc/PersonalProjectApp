@@ -1,7 +1,5 @@
-import { error } from "@angular/compiler/src/util";
-import { Component, OnInit, Renderer2 } from "@angular/core";
-import {FormControl, Validators, NgForm} from '@angular/forms';
-
+import { Component, OnInit} from "@angular/core";
+import {NgForm} from '@angular/forms';
 import { User } from '../../../../app/core/models/user.model';
 
 import { LoginService } from './login.service';
