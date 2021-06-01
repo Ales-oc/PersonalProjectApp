@@ -5,9 +5,7 @@ const morgan = require('morgan');
 
 const { mongoose } = require('./database');
 
-//const url = 'mongodb+srv://admin:admin@clusterpproject.ch6oj.mongodb.net/PersonalProjectDB?retryWrites=true&w=majority';
-
-//const User = require('./models/user');
+const User = require('./models/user')
 
 //Settings
 app.set('port', process.env.PORT || 3000);

@@ -1,3 +1,4 @@
+import { error } from "@angular/compiler/src/util";
 import { Component, OnInit} from "@angular/core";
 import {NgForm} from '@angular/forms';
 import { User } from '../../../../app/core/models/user.model';
@@ -24,11 +25,9 @@ export class LoginComponent implements OnInit{
 
   sendLogin(f: NgForm){
 
-    if(f.valid){
-
+    if(f.valid) {
       this.loginService.validateLogin(f.value.email, f.value.password).subscribe(data => {
         console.log("Logueado")
-        console.log(data)
       },
       error => {
         console.log(error)
@@ -39,9 +38,17 @@ export class LoginComponent implements OnInit{
   }
 
   sendRegister(f: NgForm, apellido: HTMLInputElement){
-    console.log(f.value)
-    console.log(apellido.value)
-    console.log(f.valid)
+
+    if(f.valid) {
+      this.loginService.registerUser(this.user = new User(f.value.nombre + " " + apellido.value, f.value.ciudad, f.value.pais, f.value.emailr, f.value.password)).subscribe(data => {
+        console.log("Usuario registrado")
+      },
+      error => {
+        console.log(error)
+      })
+
+    }
+
   }
 
 }
