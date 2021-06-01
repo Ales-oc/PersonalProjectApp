@@ -23,13 +23,11 @@ userCtrl.createUser = async (req, res) =>  {
 
   await newUser.save();
 
-  res.json({
-    'status': 'User saved'
-  });
-
   const token = jwt.sign({_id: newUser._id}, 'PP_SecretKey');
 
   res.status(200).json({
+    'status': 'User saved',
+    newUser,
     token
   });
 
@@ -50,10 +48,9 @@ userCtrl.loginUser = async (req, res) => {
   res.status(200).json({
     token
   });
-  console.log(token)
 };
 
-userCtrl.editUser = async (req, res) => {
+/**userCtrl.editUser = async (req, res) => {
   const user = {
     name: req.body.name,
     ciudad: req.body.ciudad,
@@ -65,7 +62,7 @@ userCtrl.editUser = async (req, res) => {
   res.json({
     'status': 'User updated'
   });
-};
+};*/
 
 userCtrl.deleteUser = async (req, res) => {
   await User.findOneAndRemove(eq.params.email);
@@ -74,6 +71,28 @@ userCtrl.deleteUser = async (req, res) => {
     'status': 'User deleted'
   });
 };
+
+userCtrl.getActividades = (req, res) => {
+  verifyToken(req)
+  res.json({
+    'status': 'Autorizado a ver los datos'
+  });
+}
+
+function verifyToken(req, res, next) {
+  if (!req.headers.authorization) {
+    return res.status(401).send('Unauthorized request');
+  }
+
+  const token = req.headers.authorization.split(' ')[1];
+  if (token === 'null') {
+    return res.staus(401).send('Unauthorize Request');
+  }
+
+  const payload = jwt.verify(token, 'PP_SecretKey');
+  req.userId = payload._id;
+  //return next();
+}
 
 
 module.exports = userCtrl;

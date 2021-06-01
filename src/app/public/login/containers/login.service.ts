@@ -15,7 +15,7 @@ export class LoginService {
 
     console.log(email)
 
-    return this.http.post('api/users/login',{
+    return this.http.post('api/login',{
       email : email,
       password : password
     })
@@ -23,7 +23,7 @@ export class LoginService {
 
   registerUser(user:User){
 
-    return this.http.post('api/users/register',{
+    return this.http.post('api/register',{
       user: user
     })
   }
