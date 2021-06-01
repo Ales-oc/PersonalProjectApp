@@ -7,10 +7,13 @@ import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 
 import { PublicComponent } from "./public.component";
 import { HomeComponent } from "./home/containers/home.component";
 import { LoginComponent } from "./login/containers/login.component";
+
+//import { LoginGuard } from './login/containers/login.guard';
 
 @NgModule({
   imports: [
@@ -21,6 +24,7 @@ import { LoginComponent } from "./login/containers/login.component";
     MatTabsModule,
     MatInputModule,
     MatIconModule,
+    HttpClientModule,
     MatButtonModule,
     CommonModule
   ],
@@ -37,7 +41,9 @@ import { LoginComponent } from "./login/containers/login.component";
     MatIconModule,
     MatButtonModule
   ],
-  providers: []
+  providers: [
+    //LoginGuard
+  ]
 })
 
 export class PublicModule {

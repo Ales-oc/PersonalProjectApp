@@ -38,8 +38,7 @@ export class LoginComponent implements OnInit{
           localStorage.setItem('token', jsonRes.token);
           this.router.navigate(['/home']);
         },
-        err =>
-        console.log(err)
+        err => console.log(err)
       )
 
     }
@@ -57,9 +56,8 @@ export class LoginComponent implements OnInit{
           localStorage.setItem('token', jsonRes.token);
           this.router.navigate(['/home']);
         },
-        err => {
-        console.log(err)
-      })
+        err => console.log(err)
+      )
 
     }
 

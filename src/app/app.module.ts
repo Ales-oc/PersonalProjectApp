@@ -6,9 +6,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 
+import { TokenInterceptorService } from './core/shared/token-interceptor.service'
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
+
+//import {LoginGuard} from './public/login/containers/login.guard';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,16 @@ import { environment } from '../environments/environment';
     CoreModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    //LoginGuard,
+    {
+
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
