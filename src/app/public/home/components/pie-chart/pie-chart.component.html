@@ -1,11 +1,12 @@
 <div class="chart-wrapper">
-  <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+  <button mat-mini-fab color="#31E04E" aria-label="Example icon button with a menu icon">
     <mat-icon>add</mat-icon>
   </button>
   <canvas baseChart
   [data]="pieChartData"
   [labels]="pieChartLabels"
   [chartType]="pieChartType"
+  [colors]="pieChartColors"
   [options]="pieChartOptions"
   [plugins]="pieChartPlugins"
   [legend]="pieChartLegend">

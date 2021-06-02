@@ -16,6 +16,7 @@ import { PieChartComponent } from './home/components/pie-chart/pie-chart.compone
 import { ChartsModule } from 'ng2-charts';
 import { BarChartComponent } from './home/components/bar-chart/bar-chart.component';
 import {MatSelectModule} from '@angular/material/select';
+import { LineChartComponent } from './home/components/line-chart/line-chart.component';
 
 //import { LoginGuard } from './login/containers/login.guard';
 
@@ -40,7 +41,8 @@ import {MatSelectModule} from '@angular/material/select';
     HomeComponent,
     LoginComponent,
     PieChartComponent,
-    BarChartComponent
+    BarChartComponent,
+    LineChartComponent
   ],
   exports: [
     FormsModule,

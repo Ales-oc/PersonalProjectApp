@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
-import { Label } from 'ng2-charts';
+import { Label, Color } from 'ng2-charts';
 
 interface Actividades {
   value: string;
@@ -24,7 +24,14 @@ export class BarChartComponent {
   public barChartPlugins = [];
 
   public barChartData: ChartDataSets[] = [
-    { data: [], label: 'Tiempo actividad (h)' }
+    { data: [20], label: 'Tiempo actividad (h)' }
+  ];
+
+  public barChartColors: Color[] = [
+    {
+      borderColor: 'white',
+      backgroundColor: 'rgba(248,150,30,0.9)'
+    },
   ];
 
   actividades: Actividades[] = [

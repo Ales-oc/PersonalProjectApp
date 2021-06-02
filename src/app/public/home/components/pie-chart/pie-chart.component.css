@@ -12,5 +12,8 @@ canvas{
 }
 
 button {
-  margin: 0.8%;
+  margin-top: 1.5%;
+  margin-left: 1%;
+  width: 5.5%;
+  height: 10%;
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ChartType, ChartOptions } from 'chart.js';
-import { SingleDataSet, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip } from 'ng2-charts';
+import { SingleDataSet, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip, Color } from 'ng2-charts';
 
 @Component({
   selector: 'app-pie-chart',
@@ -18,7 +18,12 @@ export class PieChartComponent {
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;
   public pieChartPlugins = [];
-
+  public pieChartColors: Color[] = [
+    {
+      borderColor: 'white',
+      backgroundColor: ['rgba(6,194,100,0.9)', 'rgba(255,89,94,0.9)', 'rgba(103,58,183,0.9)']
+    },
+  ];
   constructor() {
     monkeyPatchChartJsTooltip();
     monkeyPatchChartJsLegend();
