@@ -6,11 +6,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {MatGridListModule} from '@angular/material/grid-list';
 import { TokenInterceptorService } from './core/shared/token-interceptor.service'
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
+import { ChartsModule } from 'ng2-charts';
 
 //import {LoginGuard} from './public/login/containers/login.guard';
 
@@ -22,7 +23,10 @@ import { environment } from '../environments/environment';
     BrowserModule,
     RouterModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
+    MatGridListModule,
+    ChartsModule,
     ReactiveFormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,

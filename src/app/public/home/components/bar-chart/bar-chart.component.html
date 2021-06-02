@@ -1,0 +1,19 @@
+<mat-form-field appearance="fill">
+  <mat-label>Actividad</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let actividad of actividades" [value]="actividad.value">
+      {{actividad.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<div class="chart-wrapper">
+  <canvas baseChart
+  [datasets]="barChartData"
+  [labels]="barChartLabels"
+  [options]="barChartOptions"
+  [plugins]="barChartPlugins"
+  [legend]="barChartLegend"
+  [chartType]="barChartType">
+  </canvas>
+</div>

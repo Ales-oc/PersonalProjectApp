@@ -1,0 +1,16 @@
+.chart-wrapper {
+  background-color: rgba(245, 245, 245, 0.801);
+  border-radius: 4%;
+  width: 104%;
+  height: 108%;
+  margin-left: -2%;
+  margin-top: -2%;
+}
+
+canvas{
+  margin-top: -5%;
+}
+
+button {
+  margin: 0.8%;
+}

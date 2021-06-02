@@ -8,10 +8,14 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
-
+import {MatGridListModule} from '@angular/material/grid-list';
 import { PublicComponent } from "./public.component";
 import { HomeComponent } from "./home/containers/home.component";
 import { LoginComponent } from "./login/containers/login.component";
+import { PieChartComponent } from './home/components/pie-chart/pie-chart.component';
+import { ChartsModule } from 'ng2-charts';
+import { BarChartComponent } from './home/components/bar-chart/bar-chart.component';
+import {MatSelectModule} from '@angular/material/select';
 
 //import { LoginGuard } from './login/containers/login.guard';
 
@@ -26,12 +30,17 @@ import { LoginComponent } from "./login/containers/login.component";
     MatIconModule,
     HttpClientModule,
     MatButtonModule,
-    CommonModule
+    CommonModule,
+    MatGridListModule,
+    ChartsModule,
+    MatSelectModule
   ],
   declarations: [
     PublicComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    PieChartComponent,
+    BarChartComponent
   ],
   exports: [
     FormsModule,
@@ -39,7 +48,9 @@ import { LoginComponent } from "./login/containers/login.component";
     MatTabsModule,
     MatInputModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatGridListModule,
+    ChartsModule
   ],
   providers: [
     //LoginGuard
