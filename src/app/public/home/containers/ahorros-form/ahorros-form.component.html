@@ -1,0 +1,44 @@
+
+<form (ngSubmit)="sendAhrrDatos(AhrrDatosForm)" #AhrrDatosForm="ngForm">
+  <div mat-dialog-content>
+    <mat-form-field appearance="fill">
+      <mat-label>Mes</mat-label>
+      <mat-select id="actSelect" required="true" ngModel #mes="ngModel" name="actividad">
+        <mat-option value="Enero">Enero</mat-option>
+        <mat-option value="Febrero">Febrero</mat-option>
+        <mat-option value="Marzo">Marzo</mat-option>
+        <mat-option value="Abril">Abril</mat-option>
+        <mat-option value="Mayo">Mayo</mat-option>
+        <mat-option value="Junio">Junio</mat-option>
+        <mat-option value="Julio">Julio</mat-option>
+        <mat-option value="Agosto">Agosto</mat-option>
+        <mat-option value="Septiembre">Septiembre</mat-option>
+        <mat-option value="Octubre">Octubre</mat-option>
+        <mat-option value="Noviembre">Noviembre</mat-option>
+        <mat-option value="Diciembre">Diciembre</mat-option>
+      </mat-select>
+      <mat-error>Campo obligatorio</mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill" id="dinero-field">
+      <input matInput
+      type="number"
+      id="dinero"
+      name="dinero"
+      ngModel
+      #dinero = "ngModel"
+      required
+      [min]="0.00"
+      [step]="1.00"
+      pattern="([0-9])">
+
+      <span matSuffix>€</span>
+      <mat-error>Campo obligatorio</mat-error>
+    </mat-form-field>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cerrar</button>
+    <button mat-button type="submit">Introducir</button><br>
+  </div>
+  </div>
+</form>

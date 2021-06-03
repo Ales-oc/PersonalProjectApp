@@ -11,9 +11,7 @@ canvas{
   margin-top: -5%;
 }
 
-button {
+#menu-btn {
   margin-top: 1.5%;
   margin-left: 1%;
-  width: 5.5%;
-  height: 10%;
 }

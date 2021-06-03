@@ -34,10 +34,16 @@ export class BarChartComponent {
     },
   ];
 
+  selectedValue: string;
+
   actividades: Actividades[] = [
-    {value: 'TrabajoEstudio', viewValue: 'Trabajo/Estudio'},
+    {value: 'TrabajoEstudios', viewValue: 'Trabajo/Estudios'},
     {value: 'TiempoLibre', viewValue: 'Tiempo Libre'},
     {value: 'Desarrollo', viewValue: 'Desarrollo Personal'}
   ];
+
+  cargarDatosActividad(selectedValue: string){
+    alert(selectedValue);
+  }
 
 }

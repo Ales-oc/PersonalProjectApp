@@ -17,6 +17,10 @@ import { ChartsModule } from 'ng2-charts';
 import { BarChartComponent } from './home/components/bar-chart/bar-chart.component';
 import {MatSelectModule} from '@angular/material/select';
 import { LineChartComponent } from './home/components/line-chart/line-chart.component';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatDialogModule} from '@angular/material/dialog';
+import {ActividadesFormComponent} from './home/containers/actividades-form/actividades-form.component'
+import {AhorrosFormComponent} from './home/containers/ahorros-form/ahorros-form.component'
 
 //import { LoginGuard } from './login/containers/login.guard';
 
@@ -25,6 +29,7 @@ import { LineChartComponent } from './home/components/line-chart/line-chart.comp
     PublicRoutingModule,
     SharedModule,
     FormsModule,
+    MatDialogModule,
     ReactiveFormsModule,
     MatTabsModule,
     MatInputModule,
@@ -34,7 +39,8 @@ import { LineChartComponent } from './home/components/line-chart/line-chart.comp
     CommonModule,
     MatGridListModule,
     ChartsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatMenuModule
   ],
   declarations: [
     PublicComponent,
@@ -42,7 +48,9 @@ import { LineChartComponent } from './home/components/line-chart/line-chart.comp
     LoginComponent,
     PieChartComponent,
     BarChartComponent,
-    LineChartComponent
+    LineChartComponent,
+    ActividadesFormComponent,
+    AhorrosFormComponent
   ],
   exports: [
     FormsModule,

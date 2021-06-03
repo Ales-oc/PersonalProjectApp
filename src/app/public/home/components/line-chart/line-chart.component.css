@@ -2,10 +2,10 @@
   background-color: rgba(245, 245, 245, 0.801);
   border-radius: 4%;
   width: 104%;
-  height: 99%;
+  height: 104.5%;
   margin-left: -2%;
   margin-top: -1.7%;
-  padding-top: 4%;
+  padding-top: 1.5%;
 }
 
 canvas{
@@ -14,4 +14,12 @@ canvas{
   margin-left: 7%;
   zoom: 0.8;
   float: left;
+}
+
+#menu-btn{
+  display: flex;
+  position: absolute;
+  float: right;
+  margin-left: 90.5%;
+  padding-left: 0.8%;
 }

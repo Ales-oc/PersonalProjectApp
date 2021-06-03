@@ -1,14 +1,29 @@
 <div class="chart-wrapper">
-  <button mat-mini-fab color="#31E04E" aria-label="Example icon button with a menu icon">
-    <mat-icon>add</mat-icon>
+  <button mat-mini-fab [matMenuTriggerFor]="menu" id="menu-btn" color="#31E04E">
+    <mat-icon>more_vert</mat-icon>
   </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click) = "formActividadesHoy()">
+      <mat-icon>add</mat-icon>
+      <span>Añadir un registro</span>
+    </button>
+    <button mat-menu-item disabled>
+      <mat-icon>edit e3c9</mat-icon>
+      <span>Editar un registro</span>
+    </button>
+    <button mat-menu-item disabled>
+      <mat-icon>close</mat-icon>
+      <span>Borrar un registro</span>
+    </button>
+  </mat-menu>
+
   <canvas baseChart
-  [data]="pieChartData"
-  [labels]="pieChartLabels"
-  [chartType]="pieChartType"
-  [colors]="pieChartColors"
-  [options]="pieChartOptions"
-  [plugins]="pieChartPlugins"
-  [legend]="pieChartLegend">
-</canvas>
+    [data]="pieChartData"
+    [labels]="pieChartLabels"
+    [chartType]="pieChartType"
+    [colors]="pieChartColors"
+    [options]="pieChartOptions"
+    [plugins]="pieChartPlugins"
+    [legend]="pieChartLegend">
+  </canvas>
 </div>
