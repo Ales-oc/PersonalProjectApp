@@ -1,7 +1,8 @@
 import { Component,OnInit } from "@angular/core";
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { FutureImplementsDisclaimerComponent } from './future-implements-disclaimer/future-implements-disclaimer.component'
-
+import { LoginService } from '../../login/containers/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,23 @@ import { FutureImplementsDisclaimerComponent } from './future-implements-disclai
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit{
-  constructor(public dialog: MatDialog){}
+  constructor(public dialog: MatDialog, public loginService: LoginService, private router: Router){}
 
-  ngOnInit(){this.dialog.open(FutureImplementsDisclaimerComponent);}
+  comprobarLogueado(){
+    if(!this.loginService.isLoggedIn()){
+      this.router.navigate(['/login'])
+    } else {
+      this.dialog.open(FutureImplementsDisclaimerComponent);
+    }
+  }
+
+  ngOnInit(){
+    this.comprobarLogueado()
+  }
+
+
+
+  logout(){
+    this.loginService.logout()
+  }
 }
