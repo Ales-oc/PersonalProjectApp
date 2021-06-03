@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 
-export class HomeService {
+export class PieChartService {
 
   private URL = 'http://localhost:3000/api/'
 

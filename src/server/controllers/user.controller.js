@@ -72,27 +72,12 @@ userCtrl.deleteUser = async (req, res) => {
   });
 };
 
-userCtrl.getActividades = (req, res) => {
-  verifyToken(req)
+userCtrl.puto = async (req, res) => {
+  await User.findOneAndRemove(eq.params.email);
+
   res.json({
-    'status': 'Autorizado a ver los datos'
+    'status': 'User deleted'
   });
-}
-
-function verifyToken(req, res, next) {
-  if (!req.headers.authorization) {
-    return res.status(401).send('Unauthorized request');
-  }
-
-  const token = req.headers.authorization.split(' ')[1];
-  if (token === 'null') {
-    return res.staus(401).send('Unauthorize Request');
-  }
-
-  const payload = jwt.verify(token, 'PP_SecretKey');
-  req.userId = payload._id;
-  //return next();
-}
-
-
+};
 module.exports = userCtrl;
+

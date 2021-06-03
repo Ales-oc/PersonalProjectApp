@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ChartType, ChartOptions } from 'chart.js';
 import { SingleDataSet, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip, Color } from 'ng2-charts';
 import {MatDialog} from '@angular/material/dialog';
 import {ActividadesFormComponent} from '../../containers/actividades-form/actividades-form.component'
+import {PieChartService} from './pie-chart.service';
+
 
 @Component({
   selector: 'app-pie-chart',
@@ -10,7 +12,7 @@ import {ActividadesFormComponent} from '../../containers/actividades-form/activi
   styleUrls: ['./pie-chart.component.css']
 })
 
-export class PieChartComponent {
+export class PieChartComponent implements OnInit {
 
   public pieChartOptions: ChartOptions = {
     responsive: true,
@@ -26,7 +28,7 @@ export class PieChartComponent {
       backgroundColor: ['rgba(6,194,100,0.9)', 'rgba(255,89,94,0.9)', 'rgba(103,58,183,0.9)']
     },
   ];
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, private pieService: PieChartService) {
     monkeyPatchChartJsTooltip();
     monkeyPatchChartJsLegend();
   }
@@ -34,6 +36,17 @@ export class PieChartComponent {
   formActividadesHoy(){
 
     this.dialog.open(ActividadesFormComponent);
+  }
+
+  ngOnInit(){
+    this.pieService.getActHoy()
+    .subscribe(
+      res => {
+        console.log(res)
+        //agregar datos
+      },
+      err => console.log(err)
+    )
   }
 
 }
