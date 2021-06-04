@@ -20,7 +20,7 @@ import { LineChartComponent } from './home/components/line-chart/line-chart.comp
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
 import {ActividadesFormComponent} from './home/containers/actividades-form/actividades-form.component'
-import {AhorrosFormComponent} from './home/containers/ahorros-form/ahorros-form.component'
+import {DineroFormComponent} from './home/containers/dinero-form/dinero-form.component'
 import { TokenInterceptorService } from '../core/shared/token-interceptor.service'
 
 //import { LoginGuard } from './login/containers/login.guard';
@@ -51,7 +51,7 @@ import { TokenInterceptorService } from '../core/shared/token-interceptor.servic
     BarChartComponent,
     LineChartComponent,
     ActividadesFormComponent,
-    AhorrosFormComponent
+    DineroFormComponent
   ],
   exports: [
     FormsModule,

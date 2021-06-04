@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Label, Color } from 'ng2-charts';
 import {MatDialog} from '@angular/material/dialog';
-import {AhorrosFormComponent} from '../../containers/ahorros-form/ahorros-form.component'
+import {AhorrosFormComponent} from '../../containers/dinero-form/dinero-form.component'
 
 @Component({
   selector: 'app-line-chart',

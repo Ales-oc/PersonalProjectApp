@@ -3,13 +3,13 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-ahorros-form',
-  templateUrl: './ahorros-form.component.html',
-  styleUrls: ['./ahorros-form.component.css']
+  selector: 'app-dinero-form',
+  templateUrl: './dinero-form.component.html',
+  styleUrls: ['./dinero-form.component.css']
 })
-export class AhorrosFormComponent implements OnInit {
+export class DineroFormComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<AhorrosFormComponent>) {}
+  constructor(public dialogRef: MatDialogRef<DineroFormComponent>) {}
 
   ngOnInit(): void {}
 
