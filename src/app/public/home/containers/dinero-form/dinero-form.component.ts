@@ -25,4 +25,8 @@ export class DineroFormComponent implements OnInit {
 
 
   }
+
+  sendGanadoDatos(f:NgForm){
+
+  }
 }

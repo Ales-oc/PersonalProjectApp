@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Label, Color } from 'ng2-charts';
 import {MatDialog} from '@angular/material/dialog';
-import {AhorrosFormComponent} from '../../containers/dinero-form/dinero-form.component'
+import {DineroFormComponent} from '../../containers/dinero-form/dinero-form.component'
 
 @Component({
   selector: 'app-line-chart',
@@ -27,14 +27,14 @@ export class LineChartComponent {
   ];
 
   public barChartData: ChartDataSets[] = [
-    { data: [156], label: 'Dinero ganado (€)' },
-    { data: [98], label: 'Dinero ahorrado (€)' }
+    { data: [1028.99], label: 'Dinero ganado (€)' },
+    { data: [156.67], label: 'Dinero ahorrado (€)' }
   ];
 
   constructor(public dialog: MatDialog){}
 
   formAhorros() {
-    this.dialog.open(AhorrosFormComponent);
+    this.dialog.open(DineroFormComponent);
   }
 
 }
