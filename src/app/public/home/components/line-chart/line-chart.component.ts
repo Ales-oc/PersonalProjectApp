@@ -27,7 +27,8 @@ export class LineChartComponent {
   ];
 
   public barChartData: ChartDataSets[] = [
-    { data: [20], label: 'Dinero ahorrado (€)' }
+    { data: [156], label: 'Dinero ganado (€)' },
+    { data: [98], label: 'Dinero ahorrado (€)' }
   ];
 
   constructor(public dialog: MatDialog){}

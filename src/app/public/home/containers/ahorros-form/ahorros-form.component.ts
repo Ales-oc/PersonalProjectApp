@@ -18,7 +18,11 @@ export class AhorrosFormComponent implements OnInit {
   }
 
   sendAhrrDatos(f:NgForm){
+
+
     console.log(f.valid)
     console.log(f.value)
+
+
   }
 }

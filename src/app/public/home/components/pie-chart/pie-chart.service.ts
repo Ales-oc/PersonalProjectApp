@@ -11,8 +11,10 @@ export class PieChartService {
 
   constructor(private http: HttpClient){}
 
-  getActHoy(){
+  /**getActHoy(){
     return this.http.get('api/act/today')
-  }
+  }*/
+
+  
 
 }

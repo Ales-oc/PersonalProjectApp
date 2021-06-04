@@ -39,14 +39,14 @@ export class PieChartComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.pieService.getActHoy()
+    /**this.pieService.getActHoy()
     .subscribe(
       res => {
         console.log(res)
         //agregar datos
       },
       err => console.log(err)
-    )
+    )*/
   }
 
 }

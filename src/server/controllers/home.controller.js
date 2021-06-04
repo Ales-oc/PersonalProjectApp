@@ -1,8 +1,9 @@
-//const User = require('../models/user');
+const Actividad = require('../models/actividades');
 
 const homeCtrl = {};
 
 const jwt = require('jsonwebtoken');
+const { json } = require('express');
 
 homeCtrl.getActividadesHoy = (req, res) => {
   verifyToken(req)
@@ -14,6 +15,29 @@ homeCtrl.getActividadesHoy = (req, res) => {
     'userId': userId
   });
 }
+
+homeCtrl.createAct = async (req, res) =>  {
+
+  const { tipo, tiempoDedicado } = req.body;
+  const token = req.headers.authorization.split(' ')[1];
+  const payload = jwt.verify(token, 'PP_SecretKey');
+  const idUsuario = payload._id;
+
+  const newActividad = new Actividad({
+    tipo,
+    tiempoDedicado,
+    idUsuario
+  });
+
+  await newActividad.save();
+
+  console.log(req.body);
+
+  res.status(200).json({
+    'status': 'Act saved',
+    newActividad
+  });
+};
 
 function verifyToken(req, res, next) {
 
@@ -28,7 +52,6 @@ function verifyToken(req, res, next) {
 
   const payload = jwt.verify(token, 'PP_SecretKey');
   req.userId = payload._id;
-  //next();
 
 }
 
@@ -39,4 +62,3 @@ function getUserId(req){
 }
 
 module.exports = homeCtrl;
-

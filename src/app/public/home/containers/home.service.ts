@@ -7,12 +7,17 @@ import { Injectable } from '@angular/core';
 
 export class HomeService {
 
-  private URL = 'http://localhost:3000/api/'
-
   constructor(private http: HttpClient){}
 
   getActHoy(){
     return this.http.get('api/act/today')
+  }
+
+  registerAct(tipo: String, tiempoDedicado: Number){
+    return this.http.post('api/actividades/ingresar', {
+      tipo: tipo,
+      tiempoDedicado: tiempoDedicado
+    });
   }
 
 }
