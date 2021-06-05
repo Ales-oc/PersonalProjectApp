@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Label, Color } from 'ng2-charts';
 import { BarChartService } from './bar-chart.service';
+import { Actividad } from '../../../../core/models/actividad.model'
 
 interface Actividades {
   value: string;
@@ -15,7 +16,10 @@ interface Actividades {
   providers: [BarChartService]
 })
 
-export class BarChartComponent {
+export class BarChartComponent implements OnInit {
+
+private listaAct = new Array()
+actividad!:Actividad
 
 constructor(
   private barService: BarChartService
@@ -24,19 +28,22 @@ constructor(
   public barChartOptions: ChartOptions = {
     responsive: true,
   };
-  public barChartLabels: Label[] = ['Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom'];
+  public barChartLabels: Label[] = [];
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
   public barChartPlugins = [];
 
   public barChartData: ChartDataSets[] = [
-    { data: [20], label: 'Tiempo actividad (h)' }
+    {
+      data: [],
+      label: 'Tiempo actividad (h)'
+    }
   ];
 
   public barChartColors: Color[] = [
     {
       borderColor: 'white',
-      backgroundColor: 'rgba(248,150,30,0.9)'
+      backgroundColor: ''
     },
   ];
 
@@ -48,8 +55,34 @@ constructor(
     {value: 'Desarrollo', viewValue: 'Desarrollo Personal'}
   ];
 
+  ngOnInit(){
+    this.recibirDatosAct()
+
+  }
+
   cargarDatosActividad(selectedValue: string){
-    alert(selectedValue);
+
+    this.limpiarDatos()
+
+    switch (selectedValue) {
+      case 'TrabajoEstudios':
+        this.agregarDatos('TrabajoEstudios');
+        this.barChartColors[0].backgroundColor = 'rgba(103,58,183,0.9)' ;
+        break;
+
+        case 'TiempoLibre':
+          this.agregarDatos('TiempoLibre');
+          this.barChartColors[0].backgroundColor = 'rgba(255,89,94,0.9)';
+          break;
+
+          case 'Desarrollo':
+            this.agregarDatos('Desarrollo');
+            this.barChartColors[0].backgroundColor = 'rgba(6,194,100,0.9)';
+            break;
+
+      default:
+        break;
+    }
   }
 
   recibirDatosAct() {
@@ -58,9 +91,46 @@ constructor(
     .subscribe (data => {
       const json = JSON.parse(JSON.stringify(data))
 
+      for(let i = 0; i<json.aggregate.length; i++){
+        this.actividad = new Actividad(
+          json.aggregate[i]._id.tipo,
+          json.aggregate[i].tiempoTotal,
+          json.aggregate[i].fechaIngreso
+        )
+
+        this.listaAct.push(this.actividad)
+      }
+
+      console.log(json);
+      console.log(this.listaAct);
+
+      //this.agregarDatos(json.aggregate);
+
     });
 
   }
 
+  agregarDatos(tipo: String) {
+    var fecha: any
+    var day: any
+    for(let i = 0; i<this.listaAct.length; i++) {
+      if(this.listaAct[i].tipo === tipo) {
+        fecha = this.listaAct[i].fechaIngreso[0].slice(5,-14)
+        fecha = fecha.split('-')[1]+"/"+fecha.split('-')[0]
+
+        this.barChartLabels.push(fecha)
+        this.barChartData[0].data.push(this.listaAct[i].tiempoTotal)
+      }
+    }
+  }
+
+  limpiarDatos() {
+    this.barChartLabels.splice(0, this.barChartLabels.length);
+    this.barChartData.splice(0, this.barChartLabels.length);
+  }
 
 }
+
+
+
+

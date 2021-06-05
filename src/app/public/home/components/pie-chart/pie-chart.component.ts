@@ -26,14 +26,10 @@ export class PieChartComponent implements OnInit {
     monkeyPatchChartJsLegend();
   }
 
-
   ngOnInit(){
 
     this.recibirDatosAct();
   }
-
-
-
 
   public pieChartOptions: ChartOptions = {
     responsive: true,
@@ -67,15 +63,37 @@ export class PieChartComponent implements OnInit {
         this.tiemposAct.push(json.aggregate[i].tiempoTotal)
       }
 
-      this.agregarDatos(this.tiemposAct);
+      console.log(json);
 
+      this.agregarDatos(json.aggregate);
 
     });
 
   }
 
-  agregarDatos(tiemposAct: Array<Number>){
-    for(let i = 0; i<tiemposAct.length; i++){
+  agregarDatos(listaAct: any){
+
+    /**if (listaAct.length < 3){
+      const tipoActEncontradas = new Array()
+
+      for(let i = 0; i<listaAct.length; i++){
+        tipoActEncontradas.push(listaAct[i]._id)
+      }
+
+      switch(false){
+        case tipoActEncontradas.includes('Desarrollo'):
+
+          break
+        case tipoActEncontradas.includes('TiempoLibre'):
+
+          break
+        case tipoActEncontradas.includes('TrabajoEstudios'):
+
+          break
+      }
+    }**/
+
+    for(let i = 0; i<listaAct.length; i++){
       this.pieChartData.push(this.tiemposAct[i])
     }
   }
