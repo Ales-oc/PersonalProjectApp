@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
   providers: [HomeService]
 })
 export class HomeComponent implements OnInit{
+
+private avisoMostrado = localStorage.getItem('avisoMostrado')
+
   constructor(
     public dialog: MatDialog,
     public loginService: LoginService,
@@ -23,7 +26,7 @@ export class HomeComponent implements OnInit{
     if(!this.loginService.isLoggedIn()){
       this.router.navigate(['/login'])
     } else {
-      this.dialog.open(FutureImplementsDisclaimerComponent);
+      this.mostrarAviso();
     }
   }
 
@@ -33,5 +36,14 @@ export class HomeComponent implements OnInit{
 
   logout(){
     this.loginService.logout()
+    localStorage.setItem('avisoMostrado', 'false')
   }
+
+  mostrarAviso(){
+    if (this.avisoMostrado !== 'true') {
+      this.dialog.open(FutureImplementsDisclaimerComponent);
+      localStorage.setItem('avisoMostrado', 'true')
+    }
+  }
+
 }

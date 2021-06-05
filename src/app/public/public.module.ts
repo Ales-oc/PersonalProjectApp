@@ -9,19 +9,25 @@ import {MatButtonModule} from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import {MatGridListModule} from '@angular/material/grid-list';
+import { ChartsModule } from 'ng2-charts';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSelectModule} from '@angular/material/select';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
+
 import { PublicComponent } from "./public.component";
 import { HomeComponent } from "./home/containers/home.component";
 import { LoginComponent } from "./login/containers/login.component";
 import { PieChartComponent } from './home/components/pie-chart/pie-chart.component';
-import { ChartsModule } from 'ng2-charts';
 import { BarChartComponent } from './home/components/bar-chart/bar-chart.component';
-import {MatSelectModule} from '@angular/material/select';
 import { LineChartComponent } from './home/components/line-chart/line-chart.component';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatDialogModule} from '@angular/material/dialog';
-import {ActividadesFormComponent} from './home/containers/actividades-form/actividades-form.component'
-import {DineroFormComponent} from './home/containers/dinero-form/dinero-form.component'
-import { TokenInterceptorService } from '../core/shared/token-interceptor.service'
+import {ActividadesFormComponent} from './home/containers/actividades-form/actividades-form.component';
+import {DineroFormComponent} from './home/containers/dinero-form/dinero-form.component';
+
+import { TokenInterceptorService } from '../core/shared/token-interceptor.service';
 
 //import { LoginGuard } from './login/containers/login.guard';
 
@@ -41,7 +47,10 @@ import { TokenInterceptorService } from '../core/shared/token-interceptor.servic
     MatGridListModule,
     ChartsModule,
     MatSelectModule,
-    MatMenuModule
+    MatMenuModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatSnackBarModule
   ],
   declarations: [
     PublicComponent,
@@ -64,7 +73,6 @@ import { TokenInterceptorService } from '../core/shared/token-interceptor.servic
     ChartsModule
   ],
   providers: [
-    //LoginGuard
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,

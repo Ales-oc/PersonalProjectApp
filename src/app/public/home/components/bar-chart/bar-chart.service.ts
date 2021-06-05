@@ -6,19 +6,16 @@ import {tap} from 'rxjs/operators';
   providedIn: 'root'
 })
 
-export class PieChartService {
-
-  private URL = 'http://localhost:3000/api/'
+export class BarChartService {
 
   constructor(private http: HttpClient){}
 
-  getActHoy(){
-    return this.http.get('api/actividades/hoy')
+  getActSemana(){
+    return this.http.get('api/actividades/semana')
       .pipe (
         tap (actividades => {
           return actividades;
         })
       )
   }
-
 }

@@ -1,27 +1,42 @@
 <body>
-  <p id="username">Username
-    <button mat-icon-button color="primary" (click)="logout()">
-      <mat-icon>logout e9ba</mat-icon>
-    </button>
-  </p>
-  <mat-grid-list cols="2" rowHeight="2:1">
-    <mat-grid-tile>
-      <div id="grafica1" class="grafica-container">
-        <app-pie-chart></app-pie-chart>
-      </div>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <div id="grafica2" class="grafica-container">
-        <app-line-chart></app-line-chart>
-      </div>
-    </mat-grid-tile>
-    <mat-grid-tile colspan=1>
-      <div id="grafica3" class="grafica-container">
-        <app-bar-chart></app-bar-chart>
-      </div>
-    </mat-grid-tile>
-  </mat-grid-list><br>
+  <header>
+    <mat-toolbar color="$mat-pink">
+      <button mat-icon-button class="example-icon" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Personal Project</span>
+      <p id="username">Username
+        <button mat-icon-button color="mat-white" (click)="logout()">
+          <mat-icon>logout e9ba</mat-icon>
+        </button>
+      </p>
+    </mat-toolbar>
+  </header>
 
+  <mat-drawer-container [hasBackdrop]=true>
+    <mat-drawer #drawer>I'm a drawer</mat-drawer>
+
+    <div id="home-container">
+      <mat-grid-list cols="2" rowHeight="2:1">
+        <mat-grid-tile>
+          <div id="grafica1" class="grafica-container">
+            <app-pie-chart></app-pie-chart>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div id="grafica2" class="grafica-container">
+            <app-line-chart></app-line-chart>
+          </div>
+        </mat-grid-tile><br>
+        <mat-grid-tile colspan=1>
+          <div id="grafica3" class="grafica-container">
+            <app-bar-chart></app-bar-chart>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list><br>
+    </div>
+
+</mat-drawer-container>
   holabr
 
   <br>
@@ -29,4 +44,5 @@
   hola
 
 </body>
+
 

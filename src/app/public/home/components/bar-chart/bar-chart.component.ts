@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
 import { Label, Color } from 'ng2-charts';
+import { BarChartService } from './bar-chart.service';
 
 interface Actividades {
   value: string;
@@ -10,10 +11,15 @@ interface Actividades {
 @Component({
   selector: 'app-bar-chart',
   templateUrl: './bar-chart.component.html',
-  styleUrls: ['./bar-chart.component.css', './bar-chart.component.scss']
+  styleUrls: ['./bar-chart.component.css', './bar-chart.component.scss'],
+  providers: [BarChartService]
 })
 
 export class BarChartComponent {
+
+constructor(
+  private barService: BarChartService
+){}
 
   public barChartOptions: ChartOptions = {
     responsive: true,
@@ -45,5 +51,16 @@ export class BarChartComponent {
   cargarDatosActividad(selectedValue: string){
     alert(selectedValue);
   }
+
+  recibirDatosAct() {
+
+    this.barService.getActSemana()
+    .subscribe (data => {
+      const json = JSON.parse(JSON.stringify(data))
+
+    });
+
+  }
+
 
 }

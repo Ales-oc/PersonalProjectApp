@@ -9,16 +9,37 @@ import {PieChartService} from './pie-chart.service';
 @Component({
   selector: 'app-pie-chart',
   templateUrl: './pie-chart.component.html',
-  styleUrls: ['./pie-chart.component.css']
+  styleUrls: ['./pie-chart.component.css'],
+  providers: [PieChartService]
 })
 
 export class PieChartComponent implements OnInit {
 
+  private tiemposAct = new Array()
+
+  constructor(
+    public dialog: MatDialog,
+    public pieService: PieChartService,
+
+    ) {
+    monkeyPatchChartJsTooltip();
+    monkeyPatchChartJsLegend();
+  }
+
+
+  ngOnInit(){
+
+    this.recibirDatosAct();
+  }
+
+
+
+
   public pieChartOptions: ChartOptions = {
     responsive: true,
   };
-  public pieChartLabels: Label[] = [['Trabajo/Estudio'], ['Tiempo libre'], 'Desarrollo Personal'];
-  public pieChartData: SingleDataSet = [30, 50, 20];
+  public pieChartLabels: Label[] = [['Desarrollo Personal'], ['Tiempo libre'], 'Trabajo/Estudio'];
+  public pieChartData: SingleDataSet = [];
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;
   public pieChartPlugins = [];
@@ -28,25 +49,35 @@ export class PieChartComponent implements OnInit {
       backgroundColor: ['rgba(6,194,100,0.9)', 'rgba(255,89,94,0.9)', 'rgba(103,58,183,0.9)']
     },
   ];
-  constructor(public dialog: MatDialog, private pieService: PieChartService) {
-    monkeyPatchChartJsTooltip();
-    monkeyPatchChartJsLegend();
-  }
 
   formActividadesHoy(){
 
     this.dialog.open(ActividadesFormComponent);
   }
 
-  ngOnInit(){
-    /**this.pieService.getActHoy()
-    .subscribe(
-      res => {
-        console.log(res)
-        //agregar datos
-      },
-      err => console.log(err)
-    )*/
+  recibirDatosAct() {
+
+    this.pieService.getActHoy()
+    .subscribe (data => {
+      const json = JSON.parse(JSON.stringify(data))
+
+      this.agregarDatos(json)
+
+      for(let i = 0; i<json.aggregate.length; i++){
+        this.tiemposAct.push(json.aggregate[i].tiempoTotal)
+      }
+
+      this.agregarDatos(this.tiemposAct);
+
+
+    });
+
+  }
+
+  agregarDatos(tiemposAct: Array<Number>){
+    for(let i = 0; i<tiemposAct.length; i++){
+      this.pieChartData.push(this.tiemposAct[i])
+    }
   }
 
 }

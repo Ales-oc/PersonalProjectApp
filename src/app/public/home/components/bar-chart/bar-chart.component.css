@@ -6,15 +6,18 @@
   margin-left: -1.5%;
   margin-top: -1.7%;
   padding-top: 5%;
+  text-align: center;
+  color: rgb(141, 141, 141);
+  font-style: italic;
 }
 
 canvas{
   display: inline;
   margin-top: 0%;
-  zoom: 0.95;
+  zoom: 0.90;
   margin-left: 3%;
   width: 96%;
-  height: 89%;
+  height: 85%;
 }
 
 
