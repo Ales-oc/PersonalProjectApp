@@ -57,13 +57,9 @@ export class PieChartComponent implements OnInit {
     .subscribe (data => {
       const json = JSON.parse(JSON.stringify(data))
 
-      this.agregarDatos(json)
-
       for(let i = 0; i<json.aggregate.length; i++){
         this.tiemposAct.push(json.aggregate[i].tiempoTotal)
       }
-
-      console.log(json);
 
       this.agregarDatos(json.aggregate);
 

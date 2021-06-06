@@ -101,11 +101,6 @@ constructor(
         this.listaAct.push(this.actividad)
       }
 
-      console.log(json);
-      console.log(this.listaAct);
-
-      //this.agregarDatos(json.aggregate);
-
     });
 
   }

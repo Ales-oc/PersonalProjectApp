@@ -103,6 +103,84 @@ homeCtrl.getActividadesSemana = async (req, res) => {
   })
 }
 
+homeCtrl.getDineroGanadoMes = async (req, res) => {
+  verifyToken(req)
+
+  const token = req.headers.authorization.split(' ')[1];
+  const payload = jwt.verify(token, 'PP_SecretKey');
+  const idUser = payload._id;
+
+  const aggregate = await DineroGanado.aggregate([
+
+    {
+      $match:{ idUsuario: idUser }
+    },
+    {
+      $group:{
+        _id:"$mes",
+        dineroTotal:{
+          $sum:"$total"
+        }
+      }
+    },
+    {
+      $sort:{
+        _id:1
+      }
+    },
+    {
+      $project:{
+        _id:1,
+        dineroTotal:1
+      }
+    }
+  ])
+
+  res.json({
+    'status':'200',
+    aggregate
+  })
+}
+
+homeCtrl.getDineroAhorradoMes = async (req, res) => {
+  verifyToken(req)
+
+  const token = req.headers.authorization.split(' ')[1];
+  const payload = jwt.verify(token, 'PP_SecretKey');
+  const idUser = payload._id;
+
+  const aggregate = await DineroAhorrado.aggregate([
+
+    {
+      $match:{ idUsuario: idUser }
+    },
+    {
+      $group:{
+        _id:"$mes",
+        dineroTotal:{
+          $sum:"$total"
+        }
+      }
+    },
+    {
+      $sort:{
+        _id:1
+      }
+    },
+    {
+      $project:{
+        _id:1,
+        dineroTotal:1
+      }
+    }
+  ])
+
+  res.json({
+    'status':'200',
+    aggregate
+  })
+}
+
 homeCtrl.createAct = async (req, res) =>  {
 
   const { tipo, tiempoDedicado } = req.body;

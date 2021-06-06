@@ -9,6 +9,7 @@ router.post('/dganado/ingresar', homeCtrl.createDGanado)
 //router.get('/dganado/ingresar', homeCtrl.createDGanado)
 router.get('/actividades/hoy', homeCtrl.getActividadesHoy)
 router.get('/actividades/semana', homeCtrl.getActividadesSemana)
-router.get('/dinero/mes', homeCtrl.getActividadesSemana)
+router.get('/dinero/ganado/mes', homeCtrl.getDineroGanadoMes)
+router.get('/dinero/ahorrado/mes', homeCtrl.getDineroAhorradoMes)
 
 module.exports = router;
