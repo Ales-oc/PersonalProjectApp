@@ -101,15 +101,17 @@ constructor(
         this.listaAct.push(this.actividad)
       }
 
+      //console.log(this.listaAct);
+
     });
 
   }
 
   agregarDatos(tipo: String) {
     var fecha: any
-    var day: any
+
     for(let i = 0; i<this.listaAct.length; i++) {
-      if(this.listaAct[i].tipo === tipo) {
+      if(this.listaAct[i].tipo.toString() == tipo) {
         fecha = this.listaAct[i].fechaIngreso[0].slice(5,-14)
         fecha = fecha.split('-')[1]+"/"+fecha.split('-')[0]
 
@@ -121,7 +123,7 @@ constructor(
 
   limpiarDatos() {
     this.barChartLabels.splice(0, this.barChartLabels.length);
-    this.barChartData.splice(0, this.barChartLabels.length);
+    this.barChartData[0].data.splice(0, this.barChartLabels.length);
   }
 
 }

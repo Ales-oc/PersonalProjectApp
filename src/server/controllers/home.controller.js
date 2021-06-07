@@ -1,4 +1,5 @@
 const Actividad = require('../models/actividades');
+const ActividadPlan = require('../models/actPlanificador');
 const DineroAhorrado = require('../models/dineroAhorrado');
 const DineroGanado = require('../models/dineroGanado');
 
@@ -180,6 +181,93 @@ homeCtrl.getDineroAhorradoMes = async (req, res) => {
     aggregate
   })
 }
+
+homeCtrl.getDatosPlanner = async (req, res) => {
+  verifyToken(req)
+
+  const token = req.headers.authorization.split(' ')[1];
+  const payload = jwt.verify(token, 'PP_SecretKey');
+  const idUser = payload._id;
+
+  const { fechaIngreso } = req.body;
+
+  const aggregate = await ActividadPlan.aggregate([
+
+    {
+      $match:{ idUsuario: idUser }
+    },
+    {
+      $match:{fechaIngreso: fechaIngreso}
+    },
+    {
+      $sort:{
+        numero:1
+      }
+    },
+    {
+      $project:{
+        numero:1,
+        tipo:1,
+        desc:1,
+        tiempoAprox:1,
+        realizado:1,
+      }
+    }
+  ])
+
+  res.json({
+    'status':'200',
+    aggregate
+  })
+}
+
+
+homeCtrl.createActOrg = async (req, res) => {
+
+  const { numero, tipo, desc, tiempoAprox, realizado, fechaIngreso } = req.body;
+  const token = req.headers.authorization.split(' ')[1];
+  const payload = jwt.verify(token, 'PP_SecretKey');
+  const idUsuario = payload._id;
+
+  const newActividadPlan = new ActividadPlan({
+    numero,
+    tipo,
+    desc,
+    tiempoAprox,
+    realizado,
+    fechaIngreso,
+    idUsuario
+  });
+
+  await newActividadPlan.save();
+
+  console.log(req.body);
+
+  res.status(200).json({
+    'status': 'Act saved',
+    newActividadPlan
+  });
+
+};
+
+homeCtrl.editRealizado = async (req, res) => {
+
+  const { numero, realizado, fechaIngreso } = req.body;
+
+  const token = req.headers.authorization.split(' ')[1];
+  const payload = jwt.verify(token, 'PP_SecretKey');
+  const idUsuario = payload._id;
+
+  await ActividadPlan.findOneAndUpdate({idUsuario: idUsuario, numero: numero, fechaIngreso: fechaIngreso}, {$set: {realizado: realizado}}, {returnOriginal:false})
+
+  console.log(req.body);
+
+  res.status(200).json({
+    'status': '"Realizado" field changed',
+  });
+
+};
+
 
 homeCtrl.createAct = async (req, res) =>  {
 

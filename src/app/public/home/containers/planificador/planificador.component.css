@@ -1,0 +1,84 @@
+/*** {font-family: Helvetica Neue, Arial, sans-serif; }*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+
+#organizador-container{
+  width: 90%;
+  height: 90%;
+  padding: 3%;
+}
+
+table { text-align: center; }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0 auto 5rem;}
+
+th, td { padding: 1.5rem; font-size: 1.3rem; }
+
+tr {background: white; }
+
+tr, td { transition: .4s ease-in; }
+
+tr:first-child {
+  font-family: 'Poppins', sans-serif;
+  background: rgb(103,58,183);
+  color: white;
+  height: 70%;
+  font-weight: 300;
+  font-size: 30%;
+}
+
+tr:nth-child(even) { background: #ebebeb; }
+
+#planificador {
+  height: 80%;
+  zoom: 0.8;
+}
+
+#form-container{
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  width: 100%;
+  margin: 1%;
+  font-size: 120%;
+}
+
+header {
+  margin-bottom: 1.5%;
+  font-family: 'Poppins', sans-serif;
+}
+
+#username{
+  font-family: 'Poppins', sans-serif;
+  text-align: right;
+  font-size: 100%;
+  margin-left: 75%;
+  margin-top: 1%;
+}
+
+
+
+#app-name {
+  margin-left: 3%;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+}
+
+#footer-table {
+  position:absolute;
+  background-color: rgb(103,58,183);
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 10%;
+  width: 90%;
+  zoom: 0.9;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  margin-bottom: -3%;
+}

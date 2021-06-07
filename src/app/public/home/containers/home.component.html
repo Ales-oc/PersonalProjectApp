@@ -4,7 +4,7 @@
       <button mat-icon-button class="example-icon" (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <span>Personal Project</span>
+      <span id="app-name">Personal Project</span>
       <p id="username">Username
         <button mat-icon-button color="mat-white" (click)="logout()">
           <mat-icon>logout e9ba</mat-icon>
@@ -14,7 +14,11 @@
   </header>
 
   <mat-drawer-container [hasBackdrop]=true>
-    <mat-drawer #drawer>I'm a drawer</mat-drawer>
+    <mat-drawer #drawer>
+      <button mat-icon-button color="mat-white" (click)="irOrganizador()">
+        <mat-icon>logout e9ba</mat-icon>
+      </button>
+    </mat-drawer>
 
     <div id="home-container">
       <mat-grid-list cols="2" rowHeight="2:1">

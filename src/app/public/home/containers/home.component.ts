@@ -4,6 +4,7 @@ import { FutureImplementsDisclaimerComponent } from './future-implements-disclai
 import { LoginService } from '../../login/containers/login.service';
 import { HomeService } from './home.service';
 import { Router } from '@angular/router';
+import { PlanificadorComponent } from './planificador/planificador.component'
 
 @Component({
   selector: 'app-home',
@@ -44,6 +45,10 @@ private avisoMostrado = localStorage.getItem('avisoMostrado')
       this.dialog.open(FutureImplementsDisclaimerComponent);
       localStorage.setItem('avisoMostrado', 'true')
     }
+  }
+
+  irOrganizador(){
+    this.router.navigate(['/home/planificador']);
   }
 
 }

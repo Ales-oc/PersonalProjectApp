@@ -16,6 +16,12 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatTableModule} from '@angular/material/table';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 import { PublicComponent } from "./public.component";
@@ -26,8 +32,10 @@ import { BarChartComponent } from './home/components/bar-chart/bar-chart.compone
 import { LineChartComponent } from './home/components/line-chart/line-chart.component';
 import {ActividadesFormComponent} from './home/containers/actividades-form/actividades-form.component';
 import {DineroFormComponent} from './home/containers/dinero-form/dinero-form.component';
+import { PlanificadorComponent } from '../public/home/containers/planificador/planificador.component'
 
 import { TokenInterceptorService } from '../core/shared/token-interceptor.service';
+
 
 //import { LoginGuard } from './login/containers/login.guard';
 
@@ -50,7 +58,12 @@ import { TokenInterceptorService } from '../core/shared/token-interceptor.servic
     MatMenuModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatCheckboxModule
   ],
   declarations: [
     PublicComponent,
@@ -60,7 +73,8 @@ import { TokenInterceptorService } from '../core/shared/token-interceptor.servic
     BarChartComponent,
     LineChartComponent,
     ActividadesFormComponent,
-    DineroFormComponent
+    DineroFormComponent,
+    PlanificadorComponent
   ],
   exports: [
     FormsModule,
@@ -77,6 +91,10 @@ import { TokenInterceptorService } from '../core/shared/token-interceptor.servic
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
+    },
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { appearance: 'fill' }
     }
   ]
 })
